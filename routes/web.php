@@ -23,10 +23,11 @@ Route::get('/', function () {
     // User::factory()->hasSemesters(1)->create(); // one way
     // Semester::factory()->forUser()->create(); // another way
 
-    $user = User::find(2);
-    $user->delete();
-    
-    return [User::all(), Semester::all()];
+    // $user = User::find(2);
+    // $user->delete();
+
+    // return [User::all(), Semester::all()];
+    return "She'll be right mate, no worries!";
 });
 
 Route::resource('courses', CourseController::class);

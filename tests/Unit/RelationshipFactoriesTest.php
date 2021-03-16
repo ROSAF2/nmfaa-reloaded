@@ -23,8 +23,6 @@ class RelationshipFactoriesTest extends TestCase
      *
      * @return void
      */
-    // use RefreshDatabase;
-    // private $user, $course, $semester, $assessment, $week;
 
     public function setup(): void {
 
