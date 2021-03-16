@@ -22,11 +22,15 @@ class SemesterFactory extends Factory
      */
     public function definition()
     {
+        //
+        // $users = User::pluck('id')->toArray(); // Together
+
         return [
             'name' => $this->faker->word,
             'start_date' => $this->faker->date($format = 'Y-m-d', $max = 'now'),
             'weeks_first_term' => $this->faker->randomDigitNot(0),
-            'user_id' => User::find(1)->id,  // Does not work when testing with factories
+            'user_id' => User::factory(), // Used for the NestedForeach
+            // 'user_id' => $this->faker->randomElement($users), // Together
         ];
     }
 }

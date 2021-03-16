@@ -22,9 +22,12 @@ class WeekFactory extends Factory
      */
     public function definition()
     {
+        // $semesters = Semester::pluck('id')->toArray();     // Together
+
         return [
             'number' => $this->faker->numberBetween($min = 1, $max = 16), // Watch out! the same number can repeat 
-            'semester_id' => Semester::find(1)->id,
+            'semester_id' => Semester::factory(), // Used for the NestedForeach
+            // 'semester_id' => $this->faker->randomElement($semesters),  // Together
         ];
     }
 }

@@ -22,10 +22,13 @@ class AssessmentFactory extends Factory
      */
     public function definition()
     {
+        // $courses = Course::pluck('id')->toArray(); // Together
+
         return [
             'name' => $this->faker->word,
             'date' => $this->faker->date($format = 'Y-m-d', $max = 'now'),
-            'course_id' => Course::all()[0]->id,  // Does not work when testing with factories
+            'course_id' => Course::factory(),
+            // 'course_id' => $this->faker->randomElement($courses), // Together
         ];
     }
 }
