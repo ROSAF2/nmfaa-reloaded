@@ -19,14 +19,14 @@ use App\Models\Week;
 */
 
 Route::get('/', function () {
-    $user = User::factory()->create(); // 1 user
-    $semester = Semester::factory()->create(['user_id' => $user->id]); // 1 Semester
-    $weeks = [];
-    // 16 weeks
-    for ($i=0; $i < 16; $i++) { 
-        $weeks[] = Week::factory()->create(['number' => ($i + 1),'semester_id' => $semester->id]); 
-    }
-    return [$user,$semester,$weeks];
+    // Examples on creating linked Users and semesters
+    // User::factory()->hasSemesters(1)->create(); // one way
+    // Semester::factory()->forUser()->create(); // another way
+
+    $user = User::find(2);
+    $user->delete();
+    
+    return [User::all(), Semester::all()];
 });
 
 Route::resource('courses', CourseController::class);

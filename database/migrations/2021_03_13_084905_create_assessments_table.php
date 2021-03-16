@@ -20,7 +20,7 @@ class CreateAssessmentsTable extends Migration
             
             // "string" Foreign Key
             $table->string('course_id');
-            $table->foreign('course_id')->references('id')->on('courses');
+            $table->foreign('course_id')->references('id')->on('courses')->onDelete('cascade');
         });
     }
 

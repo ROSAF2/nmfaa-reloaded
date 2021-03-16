@@ -16,7 +16,7 @@ class CreateWeeksTable extends Migration
         Schema::create('weeks', function (Blueprint $table) {
             $table->id();
             $table->integer('number');
-            $table->foreignId('semester_id')->constrained(); // "integer" Foreign key One liner
+            $table->foreignId('semester_id')->constrained()->onDelete('cascade'); // "integer" Foreign key One liner
         });
     }
 
