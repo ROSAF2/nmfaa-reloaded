@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Course;
 use Illuminate\Http\Request;
 
 class CourseController extends Controller
@@ -14,7 +15,8 @@ class CourseController extends Controller
     public function index()
     {
         //
-        return "Courses!!!!!!!";
+        $courses = Course::orderBy('id')->get();
+        return view('courses.index', compact('courses'));
     }
 
     /**
@@ -25,6 +27,7 @@ class CourseController extends Controller
     public function create()
     {
         //
+        return view('courses.create');
     }
 
     /**
@@ -35,7 +38,16 @@ class CourseController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'id' => 'unique:App\Models\Course,id',
+            'name'=>'required',
+        ]);
+
+        $course=new Course();
+        $course->id = $request->input('id');
+        $course->name = $request->input('name');
+        $course->save();
+        return redirect('/courses')->with('success', 'Course Created');
     }
 
     /**
@@ -47,6 +59,9 @@ class CourseController extends Controller
     public function show($id)
     {
         //
+        $course=Course::find($id);
+
+        return view('courses.show', compact('course'));   
     }
 
     /**
@@ -58,6 +73,8 @@ class CourseController extends Controller
     public function edit($id)
     {
         //
+        $course = Course::find($id);
+        return view('courses.edit', compact('course'));   
     }
 
     /**
@@ -69,7 +86,17 @@ class CourseController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'id'=>'required',
+            'name'=>'required',
+        ]);
+
+        $course = Course::find($id);
+        $course->id = $request->input('id');
+        $course->name = $request->input('name');
+        $course->save();
+
+        return redirect('/courses')->with('success', 'Course Updated');
     }
 
     /**
@@ -81,5 +108,8 @@ class CourseController extends Controller
     public function destroy($id)
     {
         //
+        $course = Course::find($id);
+        $course->delete();
+        return redirect('/courses')->with('success', 'Course Deleted');
     }
 }
