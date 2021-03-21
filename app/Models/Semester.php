@@ -10,7 +10,7 @@ class Semester extends Model
     use HasFactory;
 
     public $timestamps = false;
-    protected $fillable=['name','start_date','weeks_first_term','user_id'];
+    protected $fillable=['name','start_date','weeks_first_term','working_weeks', 'holiday_weeks','user_id'];
 
     // Relationships
     public function user()

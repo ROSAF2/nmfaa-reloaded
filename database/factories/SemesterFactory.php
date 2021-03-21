@@ -29,6 +29,8 @@ class SemesterFactory extends Factory
             'name' => $this->faker->word,
             'start_date' => $this->faker->date($format = 'Y-m-d', $max = 'now'),
             'weeks_first_term' => $this->faker->randomDigitNot(0),
+            'holiday_weeks' => $this->faker->numberBetween($min = 0, $max = 6),
+            'working_weeks' => $this->faker->numberBetween($min = 10, $max = 20),
             'user_id' => User::factory(), // Used for the NestedForeach
             // 'user_id' => $this->faker->randomElement($users), // Together
         ];

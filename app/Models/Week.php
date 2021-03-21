@@ -10,7 +10,7 @@ class Week extends Model
     use HasFactory;
 
     public $timestamps = false;
-    protected $fillable=['number','semester_id'];
+    protected $fillable=['number','start_date', 'is_holiday_week','semester_id'];
 
     // Relationships
     public function semester()

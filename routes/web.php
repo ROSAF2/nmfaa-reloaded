@@ -30,8 +30,36 @@ Route::get('/', function () {
     // $user->delete();
 
     // return [User::all(), Semester::all()];
-    return "She'll be right mate, no worries!";
+
+    // Timetable
+    $semester = Semester::all();
+    $semester = $semester[0];
+
+    
+    $weeks = $semester->weeks;
+    $dateNow = date(now());
+    $withinSemester = false;
+
+    for ($i=0; $i < $weeks->count(); $i++) { 
+        // We define this two variables for readability
+        $start =$weeks[$i]->start_date;
+        $end = date('Y-m-d', strtotime($start . " +7 day"));
+
+        if ($start <= $dateNow && $dateNow < $end) {
+            if ($weeks[$i]->is_holiday_week) echo "We are on holiday break";
+            else echo "We are in week " . $weeks[$i]->number;
+            $withinSemester = true;
+            break;
+        }
+    }
+
+    if (!$withinSemester) {
+        echo "We are not in class at the moment.";
+    }
+
 });
+
+
 
 Route::resource('courses', CourseController::class);
 Route::resource('assessments', AssessmentController::class);

@@ -26,6 +26,8 @@ class WeekFactory extends Factory
 
         return [
             'number' => $this->faker->numberBetween($min = 1, $max = 16), // Watch out! the same number can repeat 
+            'start_date' => $this->faker->date($format = 'Y-m-d', $max = 'now'),
+            'is_holiday_week' => $this->faker->boolean,
             'semester_id' => Semester::factory(), // Used for the NestedForeach
             // 'semester_id' => $this->faker->randomElement($semesters),  // Together
         ];
