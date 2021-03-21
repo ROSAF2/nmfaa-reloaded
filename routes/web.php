@@ -23,7 +23,8 @@ use App\Models\Week;
 
 Route::get('/', function () {
     // Examples on creating linked Users and semesters
-    User::factory()->hasSemesters(1)->create(); // one way
+    // User::factory()->hasSemesters(1)->create(); // one way
+    User::factory()->create();
     // Semester::factory()->forUser()->create(); // another way
 
     // $user = User::find(2);
