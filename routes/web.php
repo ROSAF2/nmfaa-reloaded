@@ -33,6 +33,7 @@ Route::get('/', function () {
     // return [User::all(), Semester::all()];
 
     // Timetable
+    /*
     $semester = Semester::all();
     $semester = $semester[0];
 
@@ -57,7 +58,7 @@ Route::get('/', function () {
     // if (!$withinSemester) {
     //     echo "We are not in class at the moment.";
     // }
-
+*/
 });
 
 
