@@ -19,6 +19,7 @@ class CreateSemestersTable extends Migration
             $table->date('start_date');
             $table->integer('weeks_first_term'); // Number of weeks for the first term
             $table->foreignId('user_id')->constrained()->onDelete('cascade'); // "integer" Foreign key One liner
+            $table->engine = 'InnoDB';
         });
     }
 

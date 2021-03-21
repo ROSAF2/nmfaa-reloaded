@@ -16,7 +16,7 @@ class AssessmentController extends Controller
     public function index()
     {
         //
-        $assessments = Assessment::orderBy('id')->get();
+        $assessments = Assessment::orderBy('course_id')->orderBy('id')->get();
         return view('assessments.index', compact('assessments'));
     }
 

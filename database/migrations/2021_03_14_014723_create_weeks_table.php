@@ -17,6 +17,7 @@ class CreateWeeksTable extends Migration
             $table->id();
             $table->integer('number');
             $table->foreignId('semester_id')->constrained()->onDelete('cascade'); // "integer" Foreign key One liner
+            $table->engine = 'InnoDB';
         });
     }
 
