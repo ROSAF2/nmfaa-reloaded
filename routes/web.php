@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\AssessmentController;
 use App\Models\User;
 use App\Models\Course;
 use App\Models\Semester;
@@ -31,3 +32,4 @@ Route::get('/', function () {
 });
 
 Route::resource('courses', CourseController::class);
+Route::resource('assessments', AssessmentController::class);

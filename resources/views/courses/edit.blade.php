@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Index Course')
+@section('title', 'Edit Course')
 @section('content')
 
 <a href="{{route('courses.show',$course->id)}}">Back</a>
