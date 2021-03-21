@@ -23,7 +23,7 @@ use App\Models\Week;
 
 Route::get('/', function () {
     // Examples on creating linked Users and semesters
-    // User::factory()->hasSemesters(1)->create(); // one way
+    User::factory()->hasSemesters(1)->create(); // one way
     // Semester::factory()->forUser()->create(); // another way
 
     // $user = User::find(2);
@@ -35,7 +35,7 @@ Route::get('/', function () {
     $semester = Semester::all();
     $semester = $semester[0];
 
-    
+
     $weeks = $semester->weeks;
     $dateNow = date(now());
     $withinSemester = false;
@@ -53,9 +53,9 @@ Route::get('/', function () {
         }
     }
 
-    if (!$withinSemester) {
-        echo "We are not in class at the moment.";
-    }
+    // if (!$withinSemester) {
+    //     echo "We are not in class at the moment.";
+    // }
 
 });
 
