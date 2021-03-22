@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\AssessmentController;
 use App\Http\Controllers\SemesterController;
+use App\Http\Controllers\PublicHolidayController;
 
 use App\Models\User;
 use App\Models\Course;
@@ -22,9 +23,12 @@ use App\Models\Week;
 */
 
 Route::get('/', function () {
+
     // Examples on creating linked Users and semesters
     // User::factory()->hasSemesters(1)->create(); // one way
     User::factory()->create();
+
+    return view('welcome');
     // Semester::factory()->forUser()->create(); // another way
 
     // $user = User::find(2);
@@ -66,3 +70,4 @@ Route::get('/', function () {
 Route::resource('courses', CourseController::class);
 Route::resource('assessments', AssessmentController::class);
 Route::resource('semesters', SemesterController::class);
+Route::resource('publicHolidays', PublicHolidayController::class);

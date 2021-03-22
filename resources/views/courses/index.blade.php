@@ -2,7 +2,8 @@
 @section('title', 'Index Course')
 @section('content')
 
-
+<a href="/">Back</a>
+<br>
 <a href="{{route('courses.create')}}">Create Course</a>
 
 <h2>These are the courses:</h2>

@@ -2,7 +2,8 @@
 @section('title', 'Index Assessment')
 @section('content')
 
-
+<a href="/">Back</a>
+<br>
 <a href="{{route('assessments.create')}}">Create assessment</a>
 
 <h2>These are the assessment:</h2>
