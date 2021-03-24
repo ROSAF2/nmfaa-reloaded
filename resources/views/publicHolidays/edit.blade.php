@@ -16,6 +16,14 @@
     <p>Enter location affected</p>
     <label><input type='text' name='location_affected' value="{{$publicHoliday->location_affected}}"></label><br>
 
+    <p>Select School</p>
+    <select name="school_id">
+        <option value="" disabled selected>-</option> 
+        @foreach ($schools as $school)
+            <option {{$publicHoliday->school_id == $school->id ? "selected" : "" }} value="{{$school->id}}">{{$school->name}}</option>
+        @endforeach
+    </select>
+
     <input type='submit' name='submit' value='Submit'>        
 </form>
 

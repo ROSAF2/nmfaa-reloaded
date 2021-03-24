@@ -15,6 +15,6 @@
 
 
 
-<h2>Public Holiday: {{$publicHoliday->date}} {{$publicHoliday->name}} {{$publicHoliday->location_affected}}</h2>
+<h2>Public Holiday: {{$publicHoliday->date}} {{$publicHoliday->name}} {{$publicHoliday->location_affected}} {{$publicHoliday->school}}</h2>
 
 @endsection

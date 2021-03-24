@@ -16,6 +16,8 @@ class CreateCoursesTable extends Migration
         Schema::create('courses', function (Blueprint $table) {
             $table->string('id')->unique();
             $table->string('name');
+
+            $table->foreignId('school_id')->constrained()->onDelete('cascade'); // "integer" Foreign key One liner
             $table->engine = 'InnoDB';
         });
     }

@@ -15,7 +15,7 @@
 
 
 
-<h2>Semester: {{$semester->name}} : {{$semester->start_date}} : {{$semester->weeks_first_term}}</h2>
+<h2>Semester: {{$semester->name}} : {{$semester->start_date}} : {{$semester->weeks_first_term}} {{$semester->school}}</h2>
 
 
 <h3>Timetable</h3>

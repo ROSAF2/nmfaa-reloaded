@@ -16,11 +16,13 @@
     <p>Enter number of weeks for the first term</p>
     <label><input type='number' name='weeks_first_term' value="{{old('weeks_first_term')}}"></label><br>
 
-    <p>Enter number of holiday weeks for this semester</p>
-    <label><input type='number' name='holiday_weeks' value="{{old('holiday_weeks')}}"></label><br>
-
-    <p>Enter number of working weeks for this semester</p>
-    <label><input type='number' name='working_weeks' value="{{old('working_weeks')}}"></label><br>
+    <p>Select School</p>
+    <select name="school_id">
+        <option value="" disabled selected>-</option> 
+        @foreach ($schools as $school)
+            <option {{old('school_id') == $school->id ? "selected" : "" }} value="{{$school->id}}">{{$school->name}}</option>
+        @endforeach
+    </select>
 
     <br>
     <input type='submit' name='submit' value='Submit'>

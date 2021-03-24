@@ -18,6 +18,11 @@ class Semester extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function school()
+    {
+        return $this->belongsTo(School::class);
+    }
+
     public function weeks()
     {
         return $this->hasMany(Week::class);

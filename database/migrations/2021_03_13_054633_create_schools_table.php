@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePublicHolidaysTable extends Migration
+class CreateSchoolsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreatePublicHolidaysTable extends Migration
      */
     public function up()
     {
-        Schema::create('public_holidays', function (Blueprint $table) {
+        Schema::create('schools', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->date('date');
-            $table->string('location_affected');
+            $table->integer('holiday_weeks'); // The number of holiday weeks that one semester has for this school
+            $table->integer('working_weeks'); // The number of working weeks that one semester has for this school
         });
     }
 
@@ -28,6 +28,6 @@ class CreatePublicHolidaysTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('public_holidays');
+        Schema::dropIfExists('schools');
     }
 }

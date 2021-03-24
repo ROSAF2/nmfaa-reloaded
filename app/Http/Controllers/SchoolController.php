@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\School;
-use App\Models\Course;
 use Illuminate\Http\Request;
+use App\Models\School;
 
-class CourseController extends Controller
+class SchoolController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +14,8 @@ class CourseController extends Controller
      */
     public function index()
     {
-        //
-        $courses = Course::orderBy('id')->get();
-        return view('courses.index', compact('courses'));
+        $schools = School::orderBy('name')->get();
+        return view('schools.index', compact('schools'));
     }
 
     /**
@@ -27,9 +25,7 @@ class CourseController extends Controller
      */
     public function create()
     {
-        //
-        $schools = School::orderBy('name')->get();
-        return view('courses.create',compact('schools'));
+        return view('schools.create');
     }
 
     /**
@@ -41,17 +37,18 @@ class CourseController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'id' => 'unique:App\Models\Course,id',
             'name'=>'required',
-            'school_id'=>'required',
+            'holiday_weeks'=>'required',
+            'working_weeks'=>'required',
         ]);
 
-        $course=new Course();
-        $course->id = $request->input('id');
-        $course->name = $request->input('name');
-        $course->school_id = $request->input('school_id');
-        $course->save();
-        return redirect('/courses')->with('success', 'Course Created');
+        $school = new School();
+        $school->name = $request->input('name');
+        $school->holiday_weeks = $request->input('holiday_weeks');
+        $school->working_weeks = $request->input('working_weeks');
+        $school->save();
+
+        return redirect('/schools')->with('success', 'School Created');
     }
 
     /**
@@ -62,10 +59,8 @@ class CourseController extends Controller
      */
     public function show($id)
     {
-        //
-        $course=Course::find($id);
-
-        return view('courses.show', compact('course'));   
+        $school = School::find($id);
+        return view('schools.show', compact('school')); 
     }
 
     /**
@@ -76,10 +71,8 @@ class CourseController extends Controller
      */
     public function edit($id)
     {
-        //
-        $course = Course::find($id);
-        $schools = School::orderBy('name')->get();
-        return view('courses.edit', compact('course', 'schools'));   
+        $school = School::find($id);
+        return view('schools.edit', compact('school')); 
     }
 
     /**
@@ -92,18 +85,18 @@ class CourseController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'id'=>'required',
             'name'=>'required',
-            'school_id'=>'required',
+            'holiday_weeks'=>'required',
+            'working_weeks'=>'required',
         ]);
 
-        $course = Course::find($id);
-        $course->id = $request->input('id');
-        $course->name = $request->input('name');
-        $course->school_id = $request->input('school_id');
-        $course->save();
+        $school = School::find($id);
+        $school->name = $request->input('name');
+        $school->holiday_weeks = $request->input('holiday_weeks');
+        $school->working_weeks = $request->input('working_weeks');
+        $school->save();
 
-        return redirect('/courses')->with('success', 'Course Updated');
+        return redirect('/schools')->with('success', 'School Updated');
     }
 
     /**
@@ -114,9 +107,8 @@ class CourseController extends Controller
      */
     public function destroy($id)
     {
-        //
-        $course = Course::find($id);
-        $course->delete();
-        return redirect('/courses')->with('success', 'Course Deleted');
+        $school = School::find($id);
+        $school->delete();
+        return redirect('/schools')->with('success', 'School Deleted');
     }
 }

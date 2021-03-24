@@ -1,12 +1,14 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\SchoolController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\AssessmentController;
 use App\Http\Controllers\SemesterController;
 use App\Http\Controllers\PublicHolidayController;
 
 use App\Models\User;
+use App\Models\School;
 use App\Models\Course;
 use App\Models\Semester;
 use App\Models\Assessment;
@@ -67,7 +69,8 @@ Route::get('/', function () {
 
 
 
-Route::resource('courses', CourseController::class);
-Route::resource('assessments', AssessmentController::class);
+Route::resource('schools', SchoolController::class);
 Route::resource('semesters', SemesterController::class);
+Route::resource('courses', CourseController::class);
 Route::resource('publicHolidays', PublicHolidayController::class);
+Route::resource('assessments', AssessmentController::class);

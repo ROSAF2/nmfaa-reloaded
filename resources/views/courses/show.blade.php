@@ -15,6 +15,6 @@
 
 
 
-<h2>Course: {{$course->id}} {{$course->name}}</h2>
+<h2>Course: {{$course->id}} {{$course->name}} {{$course->school}}</h2>
 
 @endsection

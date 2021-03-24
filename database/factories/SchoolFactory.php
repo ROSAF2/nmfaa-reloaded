@@ -3,17 +3,16 @@
 namespace Database\Factories;
 
 use App\Models\School;
-use App\Models\Course;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class CourseFactory extends Factory
+class SchoolFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Course::class;
+    protected $model = School::class;
 
     /**
      * Define the model's default state.
@@ -23,9 +22,9 @@ class CourseFactory extends Factory
     public function definition()
     {
         return [
-            'id' => $this->faker->isbn10,
             'name' => $this->faker->word,
-            'school_id' => School::factory(),
+            'holiday_weeks' => $this->faker->numberBetween($min = 0, $max = 4),
+            'working_weeks' => $this->faker->numberBetween($min = 10, $max = 20),
         ];
     }
 }

@@ -13,6 +13,14 @@
     <p>Enter name of the course</p>
     <label><input type='text' name='name' value="{{$course->name}}"></label><br>
 
+    <p>Select School</p>
+    <select name="school_id">
+        <option value="" disabled selected>-</option> 
+        @foreach ($schools as $school)
+            <option {{$course->school_id == $school->id ? "selected" : "" }} value="{{$school->id}}">{{$school->name}}</option>
+        @endforeach
+    </select>
+
     <input type='submit' name='submit' value='Submit'>        
 </form>
 

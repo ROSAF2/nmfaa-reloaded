@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSemestersTable extends Migration
+class CreatePublicHolidaysTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,12 @@ class CreateSemestersTable extends Migration
      */
     public function up()
     {
-        Schema::create('semesters', function (Blueprint $table) {
+        Schema::create('public_holidays', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->date('start_date');
-            $table->integer('weeks_first_term'); // Number of weeks for the first term
+            $table->date('date');
+            $table->string('location_affected');
 
-            $table->foreignId('user_id')->constrained()->onDelete('cascade'); // "integer" Foreign key One liner
             $table->foreignId('school_id')->constrained()->onDelete('cascade'); // "integer" Foreign key One liner
             $table->engine = 'InnoDB';
         });
@@ -32,6 +31,6 @@ class CreateSemestersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('semesters');
+        Schema::dropIfExists('public_holidays');
     }
 }

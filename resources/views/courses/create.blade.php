@@ -10,10 +10,18 @@
     <p>Enter course id</p>
         <label><input type='text' name='id' value="{{old('id')}}"></label><br>
 
-        <p>Enter Name of the course</p>
-        <label><input type='text' name='name' value="{{old('name')}}"></label><br>
+    <p>Enter Name of the course</p>
+    <label><input type='text' name='name' value="{{old('name')}}"></label><br>
 
-        <input type='submit' name='submit' value='Submit'>
+    <p>Select School</p>
+    <select name="school_id">
+        <option value="" disabled selected>-</option> 
+        @foreach ($schools as $school)
+            <option {{old('school_id') == $school->id ? "selected" : "" }} value="{{$school->id}}">{{$school->name}}</option>
+        @endforeach
+    </select>
+
+    <input type='submit' name='submit' value='Submit'>
 </form>
 
 @endsection

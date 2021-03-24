@@ -2,8 +2,9 @@
 
 namespace Database\Factories;
 
-use App\Models\Semester;
 use App\Models\User;
+use App\Models\School;
+use App\Models\Semester;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class SemesterFactory extends Factory
@@ -28,10 +29,9 @@ class SemesterFactory extends Factory
         return [
             'name' => $this->faker->word,
             'start_date' => $this->faker->date($format = 'Y-m-d', $max = 'now'),
-            'weeks_first_term' => $this->faker->randomDigitNot(0),
-            'holiday_weeks' => $this->faker->numberBetween($min = 0, $max = 6),
-            'working_weeks' => $this->faker->numberBetween($min = 10, $max = 20),
+            'weeks_first_term' => $this->faker->numberBetween($min = 6, $max = 11),
             'user_id' => User::factory(), // Used for the NestedForeach
+            'school_id' => School::factory(),
             // 'user_id' => $this->faker->randomElement($users), // Together
         ];
     }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\School;
 use App\Models\PublicHoliday;
 
 class PublicHolidayController extends Controller
@@ -14,7 +15,7 @@ class PublicHolidayController extends Controller
      */
     public function index()
     {
-        $publicHolidays = PublicHoliday::all();
+        $publicHolidays = PublicHoliday::orderBy('school_id')->orderBy('date')->get();
         return view('publicHolidays.index', compact('publicHolidays'));
     }
 
@@ -25,7 +26,8 @@ class PublicHolidayController extends Controller
      */
     public function create()
     {
-        return view('publicHolidays.create');
+        $schools = School::orderBy('name')->get();
+        return view('publicHolidays.create',compact('schools'));
     }
 
     /**
@@ -40,12 +42,14 @@ class PublicHolidayController extends Controller
             'name' => 'required',
             'date' => 'required',
             'location_affected'=>'required',
+            'school_id'=>'required',
         ]);
 
         $publicHoliday = new PublicHoliday();
         $publicHoliday->name = $request->input('name');
         $publicHoliday->date = $request->input('date');
         $publicHoliday->location_affected = $request->input('location_affected');
+        $publicHoliday->school_id = $request->input('school_id');
         $publicHoliday->save();
 
         return redirect('/publicHolidays')->with('success', 'Public Holiday Created');
@@ -73,8 +77,8 @@ class PublicHolidayController extends Controller
     public function edit($id)
     {
         $publicHoliday = PublicHoliday::find($id);
-
-        return view('publicHolidays.edit', compact('publicHoliday'));   
+        $schools = School::orderBy('name')->get();
+        return view('publicHolidays.edit', compact('publicHoliday', 'schools'));  
     }
 
     /**
@@ -90,12 +94,14 @@ class PublicHolidayController extends Controller
             'name' => 'required',
             'date' => 'required',
             'location_affected'=>'required',
+            'school_id'=>'required',
         ]);
 
         $publicHoliday = PublicHoliday::find($id);
         $publicHoliday->name = $request->input('name');
         $publicHoliday->date = $request->input('date');
         $publicHoliday->location_affected = $request->input('location_affected');
+        $publicHoliday->school_id = $request->input('school_id');
         $publicHoliday->save();
 
         return redirect('/publicHolidays')->with('success', 'Public Holiday Updated');

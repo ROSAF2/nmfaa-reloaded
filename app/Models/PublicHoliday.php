@@ -11,4 +11,10 @@ class PublicHoliday extends Model
 
     public $timestamps = false;
     protected $fillable=['name', 'date', 'location_affected'];
+
+    // Relationships
+    public function school()
+    {
+        return $this->belongsTo(School::class);
+    }
 }

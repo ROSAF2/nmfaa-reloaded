@@ -75,7 +75,7 @@ class AssessmentController extends Controller
      */
     public function edit($id)
     {
-        $courses = Course::all();
+        $courses = Course::orderBy('id')->get();
         $assessment = Assessment::find($id);
         return view('assessments.edit', compact('assessment','courses'));
     }

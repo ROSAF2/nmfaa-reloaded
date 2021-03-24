@@ -18,6 +18,11 @@ class Course extends Model
     protected $fillable=['name', 'date', 'course_id'];
 
     // Relationships
+    public function school()
+    {
+        return $this->belongsTo(School::class);
+    }
+
     public function assessments()
     {
         return $this->hasMany(Assessment::class);
